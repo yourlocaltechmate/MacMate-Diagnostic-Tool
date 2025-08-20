@@ -103,7 +103,7 @@ ENCRYPTED_EMAIL = b"<your_encrypted_email_here>"
 ENCRYPTED_PASSWORD = b"<your_encrypted_password_here>"
 ```
 
-> This ensures your credentials are never visible or uploaded to GitHub.
+> Without this the email section will not work !
 
 ---
 
