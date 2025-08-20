@@ -24,6 +24,16 @@ if SECRET_KEY is None:
     raise ValueError("❌ SECRET_KEY not found. Please add it to your .env file.")
 fernet = Fernet(SECRET_KEY.encode())
 
+# Optional Email Setup
+ENCRYPTED_EMAIL = os.getenv("ENCRYPTED_EMAIL", None)
+ENCRYPTED_PASSWORD = os.getenv("ENCRYPTED_PASSWORD", None)
+
+if ENCRYPTED_EMAIL and ENCRYPTED_PASSWORD:
+    EMAIL = fernet.decrypt(ENCRYPTED_EMAIL.encode()).decode()
+    PASSWORD = fernet.decrypt(ENCRYPTED_PASSWORD.encode()).decode()
+else:
+    EMAIL = PASSWORD = None  # Email reporting disabled
+
 
 # ---------------------------
 # GLOBAL ERROR LOG
@@ -405,6 +415,10 @@ def main(page: ft.Page):
             if error_messages:
                 report += "\n⚠️ Errors detected during monitoring:\n"
                 report += "\n".join(error_messages)
+            if EMAIL and PASSWORD:
+            send_report(email_field.value, report)
+        else:
+             status.value = "⚠️ Email reporting not configured"
 
             send_report(email_field.value, report)
             status.value = "✅ Report sent successfully"
