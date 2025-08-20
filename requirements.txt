@@ -1,0 +1,5 @@
+flet
+psutil
+cryptography
+python-dotenv
+certifi
