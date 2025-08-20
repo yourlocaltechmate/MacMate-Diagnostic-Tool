@@ -62,8 +62,8 @@ def close_dialog(page):
 # ---------------------------
 # ENCRYPTED EMAIL SETUP
 # ---------------------------
-ENCRYPTED_EMAIL = b"gAAAAABopLv5zGtj3IF5dolGidL14kQbRcgS5rZFLoVVWSnsrwMO7_08mGJ30MKUECd_JzaD2I_N076YUbggxBmpzATm8LrXGuEsjf16GQmV8W6wDjzT4pk="
-ENCRYPTED_PASSWORD = b"gAAAAABopLv5Mq0P7OkqNwuEIf-lY3wLPb5DFKFROcSk7_b8X3v71b_MddNfz9qj6I7HdwLu9d4tA7lICGwn-SUX9xRnGlqra3wyC0E3tAnzDCQdmiJHsTw="
+ENCRYPTED_EMAIL = b"PLACEHOLDER"
+ENCRYPTED_PASSWORD = b"PLACEHOLDER"
 fernet = Fernet(SECRET_KEY)
 EMAIL = fernet.decrypt(ENCRYPTED_EMAIL).decode()
 PASSWORD = fernet.decrypt(ENCRYPTED_PASSWORD).decode()
